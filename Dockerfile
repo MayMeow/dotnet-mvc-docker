@@ -11,6 +11,7 @@ RUN dotnet publish \
   -o ./output
 
 FROM alpine:3.12
+RUN apk add --no-cache libstdc++ libintl
 RUN adduser \
   --disabled-password \
   --home /app \
@@ -23,4 +24,4 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 \
   DOTNET_RUNNING_IN_CONTAINER=true \
   ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
-ENTRYPOINT ["./sample-mvc", "--urls", "http://0.0.0.0:8080"]
+ENTRYPOINT ["./mvc", "--urls", "http://0.0.0.0:8080"]
