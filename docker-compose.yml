@@ -1,0 +1,10 @@
+version: '2.3'
+
+services:
+  web:
+    build: .
+    image: mvc
+    container_name: mvc_web
+    restart: always
+    ports:
+      - '8000:8000'
